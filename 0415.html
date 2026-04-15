@@ -1,0 +1,394 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 基础知识</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+        h1 { color: #333; border-bottom: 2px solid #007acc; padding-bottom: 10px; }
+        h2 { color: #007acc; margin-top: 30px; }
+        .code-block { background-color: #f4f4f4; border-left: 4px solid #007acc; padding: 15px; margin: 10px 0; overflow-x: auto; }
+        .output { background-color: #e8f5e9; border-left: 4px solid #4caf50; padding: 10px; margin: 10px 0; }
+        button { background-color: #007acc; color: white; padding: 10px 20px; border: none; cursor: pointer; margin: 5px; }
+        button:hover { background-color: #005fa3; }
+    </style>
+</head>
+<body>
+    <h1>🚀 JavaScript 基础知识学习</h1>
+    
+    <h2>1. 变量声明</h2>
+    <div class="code-block">
+        <pre>
+// var: 函数作用域，可重复声明（不推荐）
+var name = "Alice";
+var name = "Bob"; // 可以
+
+// let: 块级作用域，不可重复声明（推荐）
+let age = 20;
+
+// const: 常量，声明后不能修改（推荐）
+const PI = 3.14159;
+        </pre>
+    </div>
+    <button onclick="demoVariables()">运行变量示例</button>
+    <div id="output1" class="output"></div>
+
+    <h2>2. 数据类型</h2>
+    <div class="code-block">
+        <pre>
+// 基本数据类型
+let str = "Hello World";      // 字符串 String
+let num = 42;                  // 数字 Number
+let bool = true;               // 布尔 Boolean
+let nothing = null;            // 空值 Null
+let notDefined;                // 未定义 Undefined
+
+// 引用数据类型
+let arr = [1, 2, 3, 4, 5];     // 数组 Array
+let obj = {name: "张三", age: 20};  // 对象 Object
+        </pre>
+    </div>
+    <button onclick="demoDataTypes()">运行数据类型示例</button>
+    <div id="output2" class="output"></div>
+
+    <h2>3. 函数定义</h2>
+    <div class="code-block">
+        <pre>
+// 函数声明
+function greet(name) {
+    return "你好，" + name + "！";
+}
+
+// 箭头函数（ES6）
+const add = (a, b) => a + b;
+
+// 默认参数
+function sayHello(name = "访客") {
+    return "欢迎，" + name;
+}
+        </pre>
+    </div>
+    <button onclick="demoFunctions()">运行函数示例</button>
+    <div id="output3" class="output"></div>
+
+    <h2>4. 条件语句</h2>
+    <div class="code-block">
+        <pre>
+let score = 85;
+
+// if...else if...else
+if (score >= 90) {
+    console.log("优秀");
+} else if (score >= 80) {
+    console.log("良好");
+} else if (score >= 60) {
+    console.log("及格");
+} else {
+    console.log("不及格");
+}
+
+// 三元运算符
+let result = score >= 60 ? "通过" : "未通过";
+        </pre>
+    </div>
+    <button onclick="demoConditionals()">运行条件语句示例</button>
+    <div id="output4" class="output"></div>
+
+    <h2>5. 循环语句</h2>
+    <div class="code-block">
+        <pre>
+// for 循环
+for (let i = 0; i < 5; i++) {
+    console.log("第" + i + "次循环");
+}
+
+// while 循环
+let count = 0;
+while (count < 3) {
+    console.log("while: " + count);
+    count++;
+}
+
+// for...of 遍历数组
+let fruits = ["苹果", "香蕉", "橙子"];
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+        </pre>
+    </div>
+    <button onclick="demoLoops()">运行循环示例</button>
+    <div id="output5" class="output"></div>
+
+    <h2>6. 数组方法</h2>
+    <div class="code-block">
+        <pre>
+let numbers = [1, 2, 3, 4, 5];
+
+// 高阶函数
+let doubled = numbers.map(n => n * 2);     // [2,4,6,8,10]
+let evens = numbers.filter(n => n % 2 === 0); // 过滤偶数 [2,4]
+let sum = numbers.reduce((a, b) => a + b, 0); // 求和 15
+
+// 其他常用
+numbers.includes(3);       // true
+numbers.indexOf(4);        // 3
+        </pre>
+    </div>
+    <button onclick="demoArrayMethods()">运行数组方法示例</button>
+    <div id="output6" class="output"></div>
+
+    <h2>7. 对象操作</h2>
+    <div class="code-block">
+        <pre>
+// 创建对象
+let student = {
+    name: "王五",
+    age: 20,
+    scores: [85, 90, 78],
+    
+    getAverage: function() {
+        let total = this.scores.reduce((a, b) => a + b, 0);
+        return total / this.scores.length;
+    }
+};
+
+// 访问属性
+student.name;              // "王五"
+student["age"];            // 20
+
+// 解构赋值
+let {name, age} = student;
+        </pre>
+    </div>
+    <button onclick="demoObjects()">运行对象示例</button>
+    <div id="output7" class="output"></div>
+
+    <h2>8. 异步编程</h2>
+    <div class="code-block">
+        <pre>
+// Promise
+const fetchData = () => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("数据加载成功！");
+        }, 1000);
+    });
+};
+
+// async/await
+async function getData() {
+    let result = await fetchData();
+    console.log(result);
+}
+        </pre>
+    </div>
+    <button onclick="demoAsync()">运行异步示例</button>
+    <div id="output8" class="output"></div>
+
+    <h2>9. DOM 操作</h2>
+    <div class="code-block">
+        <pre>
+// 获取元素
+let element = document.getElementById("myId");
+
+// 修改内容
+element.innerHTML = "<b>新内容</b>";
+
+// 修改样式
+element.style.color = "red";
+
+// 添加事件监听
+element.addEventListener("click", function() {
+    alert("被点击了！");
+});
+        </pre>
+    </div>
+    <button onclick="demoDOM()">运行DOM示例</button>
+    <div id="output9" class="output"></div>
+
+    <script>
+        function showOutput(elementId, content) {
+            document.getElementById(elementId).innerHTML = content;
+        }
+
+        function demoVariables() {
+            let output = "";
+            var name1 = "Alice";
+            var name1 = "Bob";
+            output += "var 示例: " + name1 + "<br>";
+            
+            let age = 25;
+            output += "let 示例: " + age + "<br>";
+            
+            const PI = 3.14159;
+            output += "const 示例: " + PI + "<br>";
+            
+            output += "<b>总结：</b>优先使用 const，需要修改时用 let";
+            showOutput("output1", output);
+        }
+
+        function demoDataTypes() {
+            let output = "";
+            let str = "Hello";
+            let num = 42;
+            let bool = true;
+            let arr = [1, 2, 3];
+            let obj = {name: "张三", age: 20};
+            
+            output += "字符串: " + typeof str + " (" + str + ")<br>";
+            output += "数字: " + typeof num + " (" + num + ")<br>";
+            output += "布尔: " + typeof bool + " (" + bool + ")<br>";
+            output += "数组: " + typeof arr + " (" + arr + ")<br>";
+            output += "对象: " + typeof obj + " (" + JSON.stringify(obj) + ")<br>";
+            
+            showOutput("output2", output);
+        }
+
+        function demoFunctions() {
+            let output = "";
+            
+            function greet(name) {
+                return "你好，" + name + "！";
+            }
+            output += "普通函数: " + greet("小明") + "<br>";
+            
+            const add = (a, b) => a + b;
+            output += "箭头函数 2+3=" + add(2, 3) + "<br>";
+            
+            const sayHello = (name = "访客") => "欢迎，" + name;
+            output += "默认参数(无参): " + sayHello() + "<br>";
+            output += "默认参数(有参): " + sayHello("小红") + "<br>";
+            
+            showOutput("output3", output);
+        }
+
+        function demoConditionals() {
+            let output = "";
+            let score = 85;
+            
+            let grade;
+            if (score >= 90) grade = "优秀";
+            else if (score >= 80) grade = "良好";
+            else if (score >= 60) grade = "及格";
+            else grade = "不及格";
+            
+            output += "分数 " + score + " 的等级是: <b>" + grade + "</b><br>";
+            
+            let pass = score >= 60 ? "通过✅" : "未通过❌";
+            output += "三元运算符结果: " + pass + "<br>";
+            
+            showOutput("output4", output);
+        }
+
+        function demoLoops() {
+            let output = "";
+            
+            output += "<b>for 循环:</b> ";
+            for (let i = 0; i < 5; i++) {
+                output += i + " ";
+            }
+            output += "<br>";
+            
+            output += "<b>while 循环:</b> ";
+            let count = 0;
+            while (count < 3) {
+                output += count + " ";
+                count++;
+            }
+            output += "<br>";
+            
+            let fruits = ["苹果", "香蕉", "橙子"];
+            output += "<b>for...of:</b> ";
+            for (let fruit of fruits) {
+                output += fruit + " ";
+            }
+            
+            showOutput("output5", output);
+        }
+
+        function demoArrayMethods() {
+            let output = "";
+            let numbers = [1, 2, 3, 4, 5];
+            
+            output += "原始数组: [" + numbers + "]<br>";
+            
+            let doubled = numbers.map(n => n * 2);
+            output += "<b>map</b> (x2): [" + doubled + "]<br>";
+            
+            let evens = numbers.filter(n => n % 2 === 0);
+            output += "<b>filter</b> (偶数): [" + evens + "]<br>";
+            
+            let sum = numbers.reduce((a, b) => a + b, 0);
+            output += "<b>reduce</b> (求和): " + sum + "<br>";
+            
+            output += "<b>includes</b> (3): " + numbers.includes(3) + "<br>";
+            
+            showOutput("output6", output);
+        }
+
+        function demoObjects() {
+            let output = "";
+            
+            let student = {
+                name: "王五",
+                age: 20,
+                scores: [85, 90, 78],
+                getAverage() {
+                    let total = this.scores.reduce((a, b) => a + b, 0);
+                    return (total / this.scores.length).toFixed(2);
+                }
+            };
+            
+            output += "学生: " + student.name + ", 年龄: " + student.age + "<br>";
+            output += "成绩: [" + student.scores + "]<br>";
+            output += "平均分: <b>" + student.getAverage() + "</b><br>";
+            
+            let {name, age} = student;
+            output += "<br>解构: name=" + name + ", age=" + age;
+            
+            showOutput("output7", output);
+        }
+
+        async function demoAsync() {
+            let output = "";
+            output += "开始执行...<br>";
+            
+            const fetchData = () => {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        resolve("✅ 异步数据加载成功！");
+                    }, 1000);
+                });
+            };
+            
+            let result = await fetchData();
+            output += result + "<br>";
+            output += "<b>async/await 让异步代码像同步一样清晰</b>";
+            
+            showOutput("output8", output);
+        }
+
+        function demoDOM() {
+            let newBox = document.createElement("div");
+            newBox.style.cssText = `
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white; padding: 20px; margin: 10px 0;
+                border-radius: 10px; text-align: center; font-size: 18px;
+            `;
+            newBox.innerHTML = "🎉 这是用 JavaScript 动态创建的元素！";
+            
+            let outputDiv = document.getElementById("output9");
+            outputDiv.innerHTML = "";
+            outputDiv.appendChild(newBox);
+            
+            newBox.addEventListener("click", function() {
+                this.innerHTML = "✨ 你点击了我！JS让网页动起来！";
+                this.style.background = "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)";
+            });
+            
+            outputDiv.innerHTML += "<br><b>点击上面的彩色卡片！</b>";
+        }
+    </script>
+</body>
+</html>
